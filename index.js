@@ -1,17 +1,14 @@
 const express = require("express");
 const app = express();
 const port = 3001;
-const validator = require("./validate");
-const validate = validator.validate;
+const {validate} = require("./validate.js");
+
 app.use(express.json());
 
-app.get("/", async (req, res) => {
-  res.send("API de validación de números de tarjeta de crédito");
-});
 app.post("/validate", async (req, res) => {
-  const cardNumber = req.body;
-  const valid = validate(cardNumber);
-  res.json([cardNumber, valid]);
+  const number = req.body.cardNumber;
+  const { response } = validate(number);
+  res.json({ number:number, response:response });
 });
 app.listen(`${port}`, () => {
   console.log("Server listening on http://localhost:3001");

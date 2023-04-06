@@ -1,6 +1,6 @@
-function validate(num) {
-  if (!num) return false;
-  const stringNum = num.toString();
+function validate(cardNumber) {
+  if (!cardNumber) return false;
+    const stringNum = cardNumber.toString();
   const reversedNum = stringNum.split("").reverse();
   let sum = 0;
   for (let i = 0; i < reversedNum.length; i++) {
@@ -13,10 +13,9 @@ function validate(num) {
     }
   }
   let response = sum % 10 === 0;
-  let result = [response];
-  return result;
-  //return response;
-}
+  
+  return {cardNumber,response};
+ }
 console.log(validate(4509950237804350));
 module.exports = {
   validate,
