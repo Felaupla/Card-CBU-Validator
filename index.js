@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3001;
+const port = process.env.port;
 const {validate} = require("./validate.js");
 
 app.use(express.json());
@@ -12,5 +12,5 @@ app.post("/validate", async (req, res) => {
 });
 app.listen(`${port}`, () => {
   console.log("Server listening on http://localhost:3001");
-  console.log(validate(4509950237804350));
+  //console.log(validate(4509950237804350));
 });
