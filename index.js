@@ -1,11 +1,16 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const multer = require("multer");
+const joi = require("joi");
+const fs = require("fs");
 const app = express();
 // ojo acá, necesitaba de un archivo env
 const port = process.env.port || 3001;
 // ojo que cambié el nombre del archivo
 const { validate } = require("./creditCardValidator.js");
+const upload = multer({ dest: "uploads/" }); // specify the destination folder for uploaded files
 
-app.use(express.json());
+app.use(bodyParser.json({ limit: "3mb" }));
 
 app.post("/validate", async (req, res) => {
   let cardNumbers = req.body.cards;
@@ -29,6 +34,21 @@ app.post("/validate", async (req, res) => {
     valid: [...response.valid],
     invalid: [...response.invalid],
   });
+});
+
+app.post("/validateFile", upload.single("file"), (req, res) => {
+  // get the uploaded file from the request object
+  // read the file contents and parse the JSON data
+  const fileContents = fs.readFileSync(req.file.path, "utf8");
+  const cardNumbers = fileContents.split("\n");
+  const results = [];
+  // access the specific field you are interested in
+  // Validate each credit card number
+  cardNumbers.forEach((cardNumber) => {
+    const validationResult = validate(cardNumber.trim(","));
+    results.push(validationResult);
+  });
+  res.json(results);
 });
 
 app.listen(`${port}`, () => {
