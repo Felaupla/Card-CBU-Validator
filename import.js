@@ -1,14 +1,14 @@
-const csv = require('csv-parser');
-const fs = require('fs');
+const csv = require("csv-parser");
+const fs = require("fs");
 
-fs.createReadStream('./uploads/file.csv')
+fs.createReadStream("./uploads/file.csv")
   .pipe(csv())
-  .on('data', (row) => {
+  .on("data", (row) => {
     // Validate the specific field
     if (!row.fieldToValidate) {
       console.log(`Invalid row: ${JSON.stringify(row)}`);
     }
   })
-  .on('end', () => {
-    console.log('CSV file successfully processed.');
+  .on("end", () => {
+    console.log("CSV file successfully processed.");
   });
