@@ -1,5 +1,5 @@
 const express = require("express");
-const {validate} = require ("../creditCardValidator")
+const {validate} = require ("../service")
 const app = express();
 const ExcelJS = require('exceljs');
 
