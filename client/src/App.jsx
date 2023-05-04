@@ -1,7 +1,7 @@
 //import { useState } from "react";
 import Validate from "./Validate.jsx";
 import "./App.css";
-import ValidateFile from "./Validatefile.jsx";
+import ValidateToFile from "./Validatefile.jsx";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       </div>
       <div>
         <h1>Credit Card Validator by file</h1>
-        <ValidateFile />
+        <ValidateToFile />
       </div>
     </>
   );
