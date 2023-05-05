@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index.js",
-    "build": "npm run build "
+    "build": "npm run clean && NODE_ENV=production npx next build --outdir=./public --quiet --omit=dev"
   },
   "repository": {
     "type": "git",
