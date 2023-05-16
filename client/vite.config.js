@@ -4,8 +4,5 @@ import reactRefresh from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  envDir: './buildConfig/environments',
   plugins: [react(), reactRefresh()],
-  base: process.env.PUBLIC_URL,
-  build: { outDir: process.env.BUILD_PATH },
 });
