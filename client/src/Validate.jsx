@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Validate.css";
+import.meta.env.HOST_DEPLOY;
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
@@ -21,7 +22,7 @@ export default function Validate() {
       } else {
         cardType = "Unknown";
       }
-      const response = await fetch("http://localhost:3001/validateunique", {
+      const response = await fetch(`${HOST_DEPLOY}/validateunique`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

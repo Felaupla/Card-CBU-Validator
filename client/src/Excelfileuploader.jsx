@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import * as XLSX from 'xlsx';
+import React, { useState } from "react";
+import axios from "axios";
+import * as XLSX from "xlsx";
+import.meta.env.HOST_DEPLOY;
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -14,7 +15,7 @@ export default function ExcelFileUploader() {
 
     reader.onload = (event) => {
       const fileData = event.target.result;
-      const workbook = XLSX.read(fileData, { type: 'array' });
+      const workbook = XLSX.read(fileData, { type: "array" });
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
@@ -23,7 +24,7 @@ export default function ExcelFileUploader() {
       };
 
       axios
-        .post('http://localhost:3001/validate', requestBody)
+        .post(`${HOST_DEPLOY}/validate`, requestBody)
         .then((response) => {
           const responseData = response.data;
 
@@ -35,32 +36,32 @@ export default function ExcelFileUploader() {
           }));
 
           const validWs = XLSX.utils.json_to_sheet(validData, {
-            header: ['columnName'],
+            header: ["columnName"],
           });
           const invalidWs = XLSX.utils.json_to_sheet(invalidData, {
-            header: ['columnName'],
+            header: ["columnName"],
           });
 
           const wb = XLSX.utils.book_new();
-          XLSX.utils.book_append_sheet(wb, validWs, 'Valid Cards');
-          XLSX.utils.book_append_sheet(wb, invalidWs, 'Invalid Cards');
+          XLSX.utils.book_append_sheet(wb, validWs, "Valid Cards");
+          XLSX.utils.book_append_sheet(wb, invalidWs, "Invalid Cards");
 
           // Generate the download link
-          const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-          const blob = new Blob([wbout], { type: 'application/octet-stream' });
+          const wbout = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+          const blob = new Blob([wbout], { type: "application/octet-stream" });
           const url = URL.createObjectURL(blob);
 
           // Create a temporary anchor element and click it to trigger download
-          const link = document.createElement('a');
+          const link = document.createElement("a");
           link.href = url;
-          link.download = 'response.xlsx';
+          link.download = "response.xlsx";
           link.click();
 
           // Clean up the URL object
           URL.revokeObjectURL(url);
         })
         .catch((error) => {
-          console.error('Error:', error);
+          console.error("Error:", error);
         });
     };
 
