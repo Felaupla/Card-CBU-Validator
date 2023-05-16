@@ -16,7 +16,7 @@ export default function Validate() {
         });
         return;
       }
-            if (cardNumber.length < 15) {
+      if (cardNumber.length < 15) {
         setResponse({
           valid: false,
           type: "Unknown",
@@ -81,7 +81,7 @@ export default function Validate() {
         <p className={response.valid ? "success" : "error"}>
           {response.valid
             ? `Valid ${response.type} Card Number`
-            : response.message}
+            : response.message || "Invalid Card Number"}
         </p>
       )}
     </div>
