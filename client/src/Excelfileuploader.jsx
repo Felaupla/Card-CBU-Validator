@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import * as XLSX from "xlsx";
-import.meta.env.HOST_DEPLOY;
+const host_deploy = process.env.HOST_DEPLOY;
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -24,7 +24,7 @@ export default function ExcelFileUploader() {
       };
 
       axios
-        .post(`${HOST_DEPLOY}/validate`, requestBody)
+        .post(`${host_deploy}/validate`, requestBody)
         .then((response) => {
           const responseData = response.data;
 
