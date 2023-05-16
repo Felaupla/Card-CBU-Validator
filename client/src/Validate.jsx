@@ -16,6 +16,14 @@ export default function Validate() {
         });
         return;
       }
+            if (cardNumber.length < 15) {
+        setResponse({
+          valid: false,
+          type: "Unknown",
+          message: "Incomplete card number.",
+        });
+        return;
+      }
 
       // Detect card type
       let cardType;
