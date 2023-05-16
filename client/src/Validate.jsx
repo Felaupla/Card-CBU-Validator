@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Validate.css";
-const host_deploy = process.env.HOST_DEPLOY;
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
+  const host_deploy = process.env.HOST_DEPLOY;
 
   const handleValidate = async () => {
     try {

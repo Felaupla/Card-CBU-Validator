@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import * as XLSX from "xlsx";
-const host_deploy = process.env.HOST_DEPLOY;
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const host_deploy = process.env.HOST_DEPLOY;
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
