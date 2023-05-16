@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const host_deploy = process.env.HOST_DEPLOY;
+  const host_deploy = import.meta.env.VITE_APP_HOST_DEPLOY;
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
