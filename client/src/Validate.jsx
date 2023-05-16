@@ -5,7 +5,6 @@ import "./Validate.css";
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
-  const {host_deploy} = process.env.REACT_APP_HOST_DEPLOY;
 
   const handleValidate = async () => {
     try {
@@ -22,7 +21,7 @@ export default function Validate() {
       } else {
         cardType = "Unknown";
       }
-      const response = await fetch(`${host_deploy}/validateunique`, {
+      const response = await fetch('validatecreditcard-production.up.railway.app/validateunique', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
