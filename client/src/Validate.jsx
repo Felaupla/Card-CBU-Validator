@@ -5,7 +5,7 @@ import "./Validate.css";
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
-  const {host_deploy} = import.meta.env.VITE_APP_HOST_DEPLOY;
+  const {host_deploy} = process.env.VITE_APP_HOST_DEPLOY;
 
   const handleValidate = async () => {
     try {
