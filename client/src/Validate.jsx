@@ -21,7 +21,7 @@ export default function Validate() {
       } else {
         cardType = "Unknown";
       }
-      const response = await fetch('validatecreditcard-production.up.railway.app/validateunique', {
+      const response = await fetch('https://validatecreditcard-production.up.railway.app/validateunique', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
