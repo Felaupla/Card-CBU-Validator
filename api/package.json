@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index.js",
-    "build": "npm run build --omit=dev"
+    "build": "echo Building the application"
   },
     "engines": {
     "node": "18.x"
