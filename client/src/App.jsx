@@ -1,21 +1,20 @@
 //import { useState } from "react";
-import Validate from "./Validate.jsx";
+import Validate from "./components/Validate.jsx";
 import "./App.css";
-import ExcelFileUploader from "./Excelfileuploader.jsx";
-import { Card } from "react-bootstrap";
+import ExcelFileUploader from "./components/Excelfileuploader.jsx";
 
 function App() {
   return (
     <>
       <div className="card">
-        <Card>
-        <h1>Credit Card Validator</h1>
-        <Validate />
-        </Card>
-        <Card>
-        <h1>Credit Card Validator by file</h1>
-        < ExcelFileUploader />
-        </Card>
+        <div className="component">
+          <h1>Credit Card Validator</h1>
+          <Validate />
+        </div>
+        <div className="component">
+          <h1>Credit Card Validator by file</h1>
+          <ExcelFileUploader />
+        </div>
       </div>
     </>
   );

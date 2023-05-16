@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
 import "./Validate.css";
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
+  const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
 
   const handleValidate = async () => {
     try {
@@ -39,16 +39,13 @@ export default function Validate() {
         cardType = "Unknown";
       }
 
-      const response = await fetch(
-        "https://validatecreditcard-production.up.railway.app/validateunique",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ card: [cardNumber] }), // Modify request body
-        }
-      );
+      const response = await fetch(`${deploy_host}/validateunique`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ card: [cardNumber] }), // Modify request body
+      });
       const data = await response.json(); // Parse response as JSON
       setResponse({
         valid: data,
@@ -61,22 +58,20 @@ export default function Validate() {
 
   return (
     <div>
-      <Form className="validateField">
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label className="title">Test a CardNumber</Form.Label>
-          <></>
-          <Form.Control
-            className="input-group"
-            type="text"
-            placeholder="Enter a CardNumber"
-            value={cardNumber.replace(/.(?=.{6})/g, "*")}
-            onChange={(e) => setCardNumber(e.target.value)}
-          />
-        </Form.Group>
-        <Button variant="primary" onClick={handleValidate}>
+      <div className="validateField">
+        <h2 className="title">Test a CardNumber</h2>
+        <></>
+        <input
+          className="input-group"
+          type="text"
+          placeholder="Enter a CardNumber"
+          value={cardNumber.replace(/.(?=.{6})/g, "*")}
+          onChange={(e) => setCardNumber(e.target.value)}
+        />
+        <button variant="primary" onClick={handleValidate}>
           Validate
-        </Button>
-      </Form>
+        </button>
+      </div>
       {response !== null && (
         <p className={response.valid ? "success" : "error"}>
           {response.valid

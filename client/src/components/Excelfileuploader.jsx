@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import * as XLSX from "xlsx";
+import "./Excelfileuploader.css";
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -23,7 +25,7 @@ export default function ExcelFileUploader() {
       };
 
       axios
-        .post('https://validatecreditcard-production.up.railway.app/validate', requestBody)
+        .post(`${deploy_host}/validate`, requestBody)
         .then((response) => {
           const responseData = response.data;
 
@@ -68,7 +70,7 @@ export default function ExcelFileUploader() {
   };
 
   return (
-    <div>
+    <div className="filevalidator">
       <input type="file" accept=".xlsx" onChange={handleFileChange} />
       <button onClick={handleFileUpload}>Upload</button>
     </div>
