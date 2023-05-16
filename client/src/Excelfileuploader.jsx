@@ -4,7 +4,6 @@ import * as XLSX from "xlsx";
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const {host_deploy} = process.env.REACT_APP_HOST_DEPLOY;
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -24,7 +23,7 @@ export default function ExcelFileUploader() {
       };
 
       axios
-        .post(`${host_deploy}/validate`, requestBody)
+        .post('validatecreditcard-production.up.railway.app/validate', requestBody)
         .then((response) => {
           const responseData = response.data;
 
