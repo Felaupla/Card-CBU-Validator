@@ -8,6 +8,15 @@ export default function Validate() {
 
   const handleValidate = async () => {
     try {
+      if (cardNumber.trim() === "") {
+        setResponse({
+          valid: false,
+          type: "Unknown",
+          message: "Card number must not be empty.",
+        });
+        return;
+      }
+
       // Detect card type
       let cardType;
       if (/^4[0-9]{12}(?:[0-9]{3})?$/.test(cardNumber)) {
@@ -21,13 +30,17 @@ export default function Validate() {
       } else {
         cardType = "Unknown";
       }
-      const response = await fetch('https://validatecreditcard-production.up.railway.app/validateunique', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ card: [cardNumber] }), // Modify request body
-      });
+
+      const response = await fetch(
+        "https://validatecreditcard-production.up.railway.app/validateunique",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ card: [cardNumber] }), // Modify request body
+        }
+      );
       const data = await response.json(); // Parse response as JSON
       setResponse({
         valid: data,
@@ -52,7 +65,7 @@ export default function Validate() {
             onChange={(e) => setCardNumber(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" onClick={() => handleValidate()}>
+        <Button variant="primary" onClick={handleValidate}>
           Validate
         </Button>
       </Form>
@@ -60,7 +73,7 @@ export default function Validate() {
         <p className={response.valid ? "success" : "error"}>
           {response.valid
             ? `Valid ${response.type} Card Number`
-            : "Invalid card number"}
+            : response.message}
         </p>
       )}
     </div>
