@@ -23,7 +23,7 @@ export default function ExcelFileUploader() {
       };
 
       axios
-        .post('validatecreditcard-production.up.railway.app/validate', requestBody)
+        .post('https://validatecreditcard-production.up.railway.app/validate', requestBody)
         .then((response) => {
           const responseData = response.data;
 
