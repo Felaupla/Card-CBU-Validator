@@ -1,5 +1,5 @@
 function validate(cardNumber) {
-  if (!cardNumber) return false;
+  if (!cardNumber || cardNumber.length===0) return false;
   const stringNum = cardNumber.toString();
   const reversedNum = stringNum.split("").reverse();
   let sum = 0;
