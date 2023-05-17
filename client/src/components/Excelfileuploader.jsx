@@ -5,7 +5,8 @@ import "./Excelfileuploader.css";
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
+  //const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
+  const deploy_host = "https://validatecreditcard-production.up.railway.app";
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);

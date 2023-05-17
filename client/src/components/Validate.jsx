@@ -4,7 +4,8 @@ import "./Validate.css";
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
-  const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
+  //const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
+  const deploy_host = "https://validatecreditcard-production.up.railway.app";
 
   const handleValidate = async () => {
     try {
