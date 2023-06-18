@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Validate.css";
+import { Input, Button, Box, Text } from '@chakra-ui/react'
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
@@ -58,28 +59,27 @@ export default function Validate() {
   };
 
   return (
-    <div>
-      <div className="validateField">
-        <h2 className="title">Test a CardNumber</h2>
-        <></>
-        <input
+    <Box>
+      <Box border='4px' borderColor='gray.300' borderRadius={20}>
+        <Input
           className="input-group"
-          type="text"
-          placeholder="Enter a CardNumber"
+          placeholder="Test a CardNumber"
           value={cardNumber.replace(/.(?=.{6})/g, "*")}
           onChange={(e) => setCardNumber(e.target.value)}
+          m={[2, 3]}
+          w="65%"
         />
-        <button variant="primary" onClick={handleValidate}>
+        <Button onClick={handleValidate}>
           Validate
-        </button>
-      </div>
+        </Button>
+      </Box>
       {response !== null && (
-        <p className={response.valid ? "success" : "error"}>
+        <Text className={response.valid ? "success" : "error"}>
           {response.valid
             ? `Valid ${response.type} Card Number`
             : response.message || "Invalid Card Number"}
-        </p>
+        </Text>
       )}
-    </div>
+    </Box>
   );
 }

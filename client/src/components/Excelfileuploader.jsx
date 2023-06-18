@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import * as XLSX from "xlsx";
 import "./Excelfileuploader.css";
+import { Input,  Button, Box, Text } from "@chakra-ui/react";
 
 export default function ExcelFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -71,9 +72,16 @@ export default function ExcelFileUploader() {
   };
 
   return (
-    <div className="filevalidator">
-      <input type="file" accept=".xlsx" onChange={handleFileChange} />
-      <button onClick={handleFileUpload}>Upload</button>
-    </div>
+    <Box mt={[2, 4, 6, 8]} width='full'>
+      <Text fontSize={{ base: '20px', md: '30px', lg: '40px' }}>Validate an XLSX File</Text>
+      <Input 
+        type="file" 
+        accept=".xlsx" 
+        onChange={handleFileChange}  
+        w="65%" 
+        m={[2, 3]}
+        />
+      <Button onClick={handleFileUpload}>Upload</Button>
+    </Box>
   );
 }
