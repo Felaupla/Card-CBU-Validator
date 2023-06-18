@@ -67,7 +67,7 @@ export default function Validate() {
           value={cardNumber.replace(/.(?=.{6})/g, "*")}
           onChange={(e) => setCardNumber(e.target.value)}
           m={[2, 3]}
-          w="65%"
+          w="60%"
         />
         <Button onClick={handleValidate}>
           Validate
