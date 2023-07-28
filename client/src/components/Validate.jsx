@@ -59,7 +59,7 @@ export default function Validate() {
 //    }
 //  };
 
-const yourFunctionName = async () => {
+const handleValidate = async () => {
   try {
     const response = await axios.post(
       `${deploy_host}/validateunique`,
