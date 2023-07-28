@@ -7,12 +7,13 @@ export default function ColorModeSwitcher() {
   //const colorShop = useColorModeValue("black", "white");
   return (
     <IconButton
+      display="flex"
       icon={colorMode === "light" ? <MoonIcon /> : <SunIcon color="white" />}
       onClick={toggleColorMode}
-      size="lg"
+      size="4xl"
       variant="ghost"
       // color="current"
-      marginLeft="2"
+
       aria-label={
         colorMode === "light" ? "Switch to dark mode" : "Switch to light mode"
       }

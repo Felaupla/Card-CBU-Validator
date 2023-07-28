@@ -1,18 +1,25 @@
-import { useState  } from "react";
+import { useState } from "react";
 import "./Validate.css";
-import { Input, InputGroup, InputRightElement, Button, Box, Text, Flex } from '@chakra-ui/react'
+import {
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+  Box,
+  Center,
+  Text,
+  HStack,
+} from "@chakra-ui/react";
+import { SmallAddIcon } from "@chakra-ui/icons";
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
-  const [show, setShow] = useState(false)
-  const handleClick = () => setShow(!show)
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   //const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
   const deploy_host = "https://validatecreditcard-production.up.railway.app";
-
-
-
 
   const handleValidate = async () => {
     try {
@@ -68,7 +75,7 @@ export default function Validate() {
     // Handle both paste and typing events
     if (e.clipboardData) {
       // If clipboardData is available, set cardNumber with the plain text content from the clipboard
-      const pastedValue = e.clipboardData.getData('text/plain');
+      const pastedValue = e.clipboardData.getData("text/plain");
       setCardNumber(pastedValue);
     } else {
       // For typing events, handle cardNumber masking manually
@@ -77,29 +84,34 @@ export default function Validate() {
     setResponse(null);
   };
   return (
-    <Box border='3px'borderColor='gray.300' boxShadow='dark-lg' p='6' rounded='2xl'>
-      <Flex align="center" justify="center" border='3px'borderColor='gray.300' borderRadius={20}>
-      <InputGroup display="flex" alignItems="center" m={[2, 3]}>
-        <Input
-          className="input-group"
-          placeholder="Test a CardNumber"
-          value={cardNumber}
-          type={show ? 'text' : 'password'}
-          onInput={handleInputChange} // Use onInput to handle both paste and typing
-          m={[2, 3]}
-          w="60%"
-        />
-        <InputRightElement >
-        <Button m={[2, 3]} h='2rem' w='4rem'  onClick={handleClick}>
-          {show ? 'Hide' : 'Show'}
-        </Button>
-      </InputRightElement>
+    <Box
+      wrap="no-wrap"
+      borderColor="gray.300"
+      boxShadow="dark-lg"
+      p="4"
+      rounded="2xl"
+    >
+      <Center>
+        <InputGroup size="xl" w="67%" borderRadius="8px">
+          <Input
+            className="input-group"
+            placeholder="Test a CardNumber"
+            value={cardNumber}
+            type={show ? "text" : "password"}
+            onInput={handleInputChange} // Use onInput to handle both paste and typing
+            m={[2, 3]}
+            h="10"
+            borderRadius="8px"
+          />
+          <InputRightElement>
+            <Button m={[2, 3]} size="md" onClick={handleClick}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
         </InputGroup>
         {/* replace(/.(?=.{6})/g, "*") */}
-        <Button onClick={handleValidate}>
-          Validate
-        </Button>
-        </Flex>
+        <Button onClick={handleValidate}>Validate</Button>
+      </Center>
       {response !== null && (
         <Text className={response.valid ? "success" : "error"}>
           {response.valid
