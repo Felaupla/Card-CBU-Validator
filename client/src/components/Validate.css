@@ -18,15 +18,14 @@
 .title {
   font-size: x-large;
 }
-.validateField {
-  display: flex;
+/* .validateField {
+   display: flex;
   width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
+  justify-content: center;
+  align-items: center; 
+} */
 .input-group {
   background-color: #b2b2b2;
-  height: 40px;
-  width: 280px;
+  /* height: 40px;
+  width: 280px; */
 }

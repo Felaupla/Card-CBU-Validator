@@ -72,7 +72,7 @@ export default function ExcelFileUploader() {
   };
 
   return (
-    <Box mt={[2, 4, 6, 8]} width='full'>
+    <Box width='full' boxShadow='dark-lg' p='4' rounded='xl'>
       <Text fontSize={{ base: '20px', md: '30px', lg: '40px' }}>Validate an XLSX File</Text>
       <Input 
         type="file" 

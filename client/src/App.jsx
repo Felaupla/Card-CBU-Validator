@@ -10,10 +10,10 @@ function App() {
     <>
           <ColorModeSwitcher/>
           <Text fontSize={{ base: '24px', md: '40px', lg: '56px' }}>Credit Card Validator</Text>
-        <Box m={[2, 3]}>
+        <Box m={[4, 5]}>
           <Validate />
         </Box>
-        <Box border='4px' borderColor='gray.300' borderRadius={20} m={[2, 3]}>
+        <Box borderRadius={20} m={[4, 5]}>
           <ExcelFileUploader />
         </Box>
    
