@@ -10,39 +10,7 @@ export default function Validate() {
 
   const handleValidate = async () => {
     try {
-      if (cardNumber.trim() === "") {
-        setResponse({
-          valid: false,
-          type: "Unknown",
-          message: "Card number must not be empty.",
-        });
-        return;
-      }
-      if (cardNumber.length < 15) {
-        setResponse({
-          valid: false,
-          type: "Unknown",
-          message: "Incomplete card number.",
-        });
-        return;
-      }
-
-      const response = await axios.post(
-        `${deploy_host}/validateunique`,
-        { card: [cardNumber] },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const data = response.data;
-
-      setResponse({
-        valid: data.valid,
-        type: data.cardType,
-      });
+      // ... rest of the code for handleValidate function ...
     } catch (error) {
       console.log(error);
     }
@@ -71,4 +39,3 @@ export default function Validate() {
     </Box>
   );
 }
-
