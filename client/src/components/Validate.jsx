@@ -57,14 +57,21 @@ export default function Validate() {
       console.log(error);
     }
   };
-  // Function to handle input changes and paste events
-  const handleInputChange = (e) => {
-    const inputValue = e.target.value;
-    setCardNumber(inputValue);
-    // Clear the response when the input value changes (new character is typed)
+const handleInputChange = (e) => {
+  const inputValue = e.target.value;
+  if (e.clipboardData && e.clipboardData.getData) {
+    // Handle paste event
+    const pastedValue = e.clipboardData.getData('text/plain');
+    setCardNumber(pastedValue);
+    // Clear the response when pasting
     setResponse(null);
-  };
-
+  } else {
+    // Handle typing event
+    setCardNumber(inputValue);
+    // Clear the response when typing (new character is typed)
+    setResponse(null);
+  }
+};
   return (
     <Box>
       <Box border='4px' borderColor='gray.300' borderRadius={20}>
