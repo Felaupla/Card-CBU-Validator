@@ -57,6 +57,15 @@ export default function Validate() {
       console.log(error);
     }
   };
+    // New function to handle input changes
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setCardNumber(inputValue);
+    // Clear the response when the input value becomes empty
+    if (inputValue.trim() === "") {
+      setResponse(null);
+    }
+  };
 
   return (
     <Box>
@@ -65,9 +74,9 @@ export default function Validate() {
           className="input-group"
           placeholder="Test a CardNumber"
           value={cardNumber.replace(/.(?=.{6})/g, "*")}
-          onChange={(e) => setCardNumber(e.target.value)}
+          onChange={handleInputChange} // Use the new function for input change
           m={[2, 3]}
-          w="65%"
+          w="60%"
         />
         <Button onClick={handleValidate}>
           Validate
