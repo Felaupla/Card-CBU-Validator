@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Validate.css";
 import { Input, Button, Box, Text } from '@chakra-ui/react'
+import axios from 'axios';
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
@@ -41,23 +42,45 @@ export default function Validate() {
         cardType = "Unknown";
       }
 
-      const response = await fetch(`${deploy_host}/validateunique`, {
-        method: "POST",
+//      const response = await fetch(`${deploy_host}/validateunique`, {
+//        method: "POST",
+//      headers: {
+//          "Content-Type": "application/json",
+//        },
+//        body: JSON.stringify({ card: [cardNumber] }), // Modify request body
+//      });
+//      const data = await response.json(); // Parse response as JSON
+//      setResponse({
+//        valid: data,
+//        type: cardType,
+//      }); // Set response state to object with boolean value and card type
+//    } catch (error) {
+//      console.log(error);
+//    }
+//  };
+
+const yourFunctionName = async () => {
+  try {
+    const response = await axios.post(
+      `${deploy_host}/validateunique`,
+      { card: [cardNumber] }, // Request body
+      {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ card: [cardNumber] }), // Modify request body
-      });
-      const data = await response.json(); // Parse response as JSON
-      setResponse({
-        valid: data,
-        type: cardType,
-      }); // Set response state to object with boolean value and card type
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      }
+    );
 
+    const data = response.data; // Parsed response data (no need to use .json())
+
+    setResponse({
+      valid: data.valid,
+      type: data.cardType,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
   return (
     <Box>
       <Box border='4px' borderColor='gray.300' borderRadius={20}>
