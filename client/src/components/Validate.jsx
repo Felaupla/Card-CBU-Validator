@@ -57,16 +57,12 @@ export default function Validate() {
       console.log(error);
     }
   };
-    // New function to handle input changes
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setCardNumber(inputValue);
-    // Clear the response when the input value becomes empty
-    if (inputValue.trim() === "") {
-      setResponse(null);
-    }
+    // Clear the response when the input value changes (new character is typed)
+    setResponse(null);
   };
-
   return (
     <Box>
       <Box border='4px' borderColor='gray.300' borderRadius={20}>
