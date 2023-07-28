@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import "./Validate.css";
 import { Input, Button, Box, Text } from '@chakra-ui/react'
 
@@ -57,12 +57,32 @@ export default function Validate() {
       console.log(error);
     }
   };
+  // Function to handle input changes and paste events
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setCardNumber(inputValue);
     // Clear the response when the input value changes (new character is typed)
     setResponse(null);
   };
+
+  // Use useEffect to handle paste events with a small delay
+  useEffect(() => {
+    const handlePaste = (e) => {
+      // Wait for a short delay to let the input value update after paste
+      setTimeout(() => {
+        const pastedValue = e.clipboardData.getData("text/plain");
+        setCardNumber(pastedValue);
+        setResponse(null); // Clear the response after pasting
+      }, 50);
+    };
+
+    document.addEventListener("paste", handlePaste);
+
+    return () => {
+      document.removeEventListener("paste", handlePaste);
+    };
+  }, []);
+
   return (
     <Box>
       <Box border='4px' borderColor='gray.300' borderRadius={20}>
