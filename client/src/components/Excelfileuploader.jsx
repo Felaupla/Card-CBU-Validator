@@ -76,6 +76,11 @@ export default function ExcelFileUploader() {
       <Text as="b" fontSize={{ base: "20px", md: "30px", lg: "40px" }}>
         Validate an Excel File
       </Text>
+      <Tooltip
+        hasArrow
+        label="Upload XLSX file only with card numbers in the first column"
+        bg="blue.500"
+      >
       <Input
         type="file"
         accept=".xlsx"
@@ -83,13 +88,8 @@ export default function ExcelFileUploader() {
         w="65%"
         m={[2, 3]}
       />
-      <Tooltip
-        hasArrow
-        label="Upload XLSX file only with card numbers in the first column"
-        bg="red.600"
-      >
-        <Button onClick={handleFileUpload}>Upload</Button>
       </Tooltip>
+        <Button onClick={handleFileUpload}>Upload</Button>
     </Box>
   );
 }

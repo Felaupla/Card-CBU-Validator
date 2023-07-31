@@ -8,7 +8,7 @@ import {
   Box,
   Center,
   Text,
-  HStack,
+  Tooltip
 } from "@chakra-ui/react";
 import { SmallAddIcon } from "@chakra-ui/icons";
 
@@ -92,6 +92,11 @@ export default function Validate() {
       rounded="2xl"
     >
       <Center>
+        <Tooltip
+        hasArrow
+        label="Insert Card Number without hyphens"
+        bg="blue.500"
+      >
         <InputGroup size="xl" w="67%" borderRadius="8px">
           <Input
             className="input-group"
@@ -109,6 +114,7 @@ export default function Validate() {
             </Button>
           </InputRightElement>
         </InputGroup>
+          </Tooltip>
         {/* replace(/.(?=.{6})/g, "*") */}
         <Button onClick={handleValidate}>Validate</Button>
       </Center>
