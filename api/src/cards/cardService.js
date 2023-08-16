@@ -16,6 +16,4 @@ function validate(cardNumber) {
 
   return { cardNumber, response };
 }
-module.exports = {
-  validate
-};
+module.exports = {validate};
