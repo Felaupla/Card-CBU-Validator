@@ -1,6 +1,6 @@
 const {
   isValid,
-} = require('./CbuService')
+} = require("./CbuService")
 const banks = require("./bankCodes")
 
 
