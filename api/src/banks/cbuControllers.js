@@ -43,10 +43,10 @@ function validateCbu() {
 function validateCbus() {
   return async function (req, res) {
     try {
-      const { cbus } = req.body;
+      const cbuNumbers = req.body.cbus;
       const validationResults = [];
 
-      cbus.forEach((cbu) => {
+      cbuNumbers.forEach((cbu) => {
         if (!/^[0-9]{22}$/.test(cbu)) {
           validationResults.push({
             cbu,
