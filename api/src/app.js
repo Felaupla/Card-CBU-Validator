@@ -6,7 +6,7 @@ const {
   validateCardToFile,
   validateCardUnique,
 } = require("./cards/cardControllers");
-const { validateCbu, validateCbus } = require("./banks/cbuControllers");
+const { validateOneCbu, validateCbus } = require("./banks/cbuControllers");
 
 var corsOptions = {
   origin: "*",
@@ -24,7 +24,7 @@ app.post("/validatetofile", cors(corsOptions), validateCardToFile());
 
 app.post("/validateunique", cors(corsOptions), validateCardUnique());
 
-app.post("/validatecbu", validateCbu());
+app.post("/validateonecbu", validateOneCbu());
 
 app.post("/validatecbus", validateCbus());
 

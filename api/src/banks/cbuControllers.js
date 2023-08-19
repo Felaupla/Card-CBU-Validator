@@ -1,7 +1,7 @@
 const { isValid, getBankName } = require("./cbuService");
 const { banks } = require("./bankCodes");
 
-function validateCbu() {
+function validateOneCbu() {
   return async function (req, res) {
     try {
       const cbuNumber = req?.body?.cbu;
@@ -70,4 +70,4 @@ function validateCbus() {
     }
   };
 }
-module.exports = { validateCbu, validateCbus };
+module.exports = { validateOneCbu, validateCbus };
