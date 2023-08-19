@@ -1,5 +1,5 @@
-const { isValid } = require("./cbuService");
-const banks = require("./bankCodes");
+const { isValid, getBankName } = require("./cbuService");
+const { banks } = require("./bankCodes");
 
 function validateCbu() {
   return async function (req, res) {
@@ -40,4 +40,34 @@ function validateCbu() {
   };
 }
 
-module.exports = { validateCbu };
+function validateCbus() {
+  return async function (req, res) {
+    try {
+      const { cbus } = req.body;
+      const validationResults = [];
+
+      cbus.forEach((cbu) => {
+        if (!/^[0-9]{22}$/.test(cbu)) {
+          validationResults.push({
+            cbu,
+            isValid: false,
+            error: "Invalid CBU format",
+          });
+          return; // Skip further validation for this CBU
+        }
+        const isValidCbu = isValid(cbu);
+        if (isValidCbu.isValid) {
+          const bankName = getBankName(cbu, banks);
+          validationResults.push({ cbu, isValid: true, bankName });
+        } else {
+          validationResults.push({ cbu, isValid: false });
+        }
+      });
+      res.json({ validationResults });
+    } catch (error) {
+      // Code to handle the error
+      console.log("An error occurred: ", error.message);
+    }
+  };
+}
+module.exports = { validateCbu, validateCbus };
