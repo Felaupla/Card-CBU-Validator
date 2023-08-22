@@ -79,11 +79,11 @@ export default function ExcelFileUploader() {
   return (
     <Box width="full" boxShadow="dark-lg" p="4" rounded="xl">
       <Text as="b" fontSize={{ base: "20px", md: "30px", lg: "40px" }}>
-        Validate an Excel File
+        Validate CBU´s on an Excel File
       </Text>
       <Tooltip
         hasArrow
-        label="Upload XLSX file only with card numbers in the first column"
+        label="Upload XLSX file only with cbu numbers in the first column"
         bg="blue.500"
       >
         <Input
