@@ -1,0 +1,27 @@
+.error {
+  color: red;
+  font-size: x-large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.success {
+  color: green;
+  font-size: x-large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.input-group {
+  font-size: larger;
+  text-align: center;
+  border-radius: 8px;
+}
+.title {
+  font-size: x-large;
+}
+/* .validateField {
+   display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center; 
+} */

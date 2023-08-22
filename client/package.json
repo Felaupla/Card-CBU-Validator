@@ -21,6 +21,7 @@
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-router-dom": "^6.15.0",
     "read-excel-file": "^5.6.1",
     "xlsx": "^0.18.5"
   },

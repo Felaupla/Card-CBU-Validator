@@ -1,9 +1,10 @@
 //import { useState } from "react";
-import Validate from "./components/Validate.jsx";
+import Validate from "./components/Cards/Validate.jsx";
 import "./App.css";
-import ExcelFileUploader from "./components/Excelfileuploader.jsx";
+import ExcelFileUploader from "./components/Cards/Excelfileuploader.jsx";
 import ColorModeSwitcher from "./utils/ColorModeSwitcher.jsx";
 import { Text, Box, Spacer } from "@chakra-ui/react";
+import CbuValidate from "./components/Cbus/CbuValidate.jsx";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       <Spacer />
       <Box borderRadius={20} m={[5, 7]}>
         <ExcelFileUploader />
+      </Box>
+      <Box borderRadius={20} m={[5, 7]}>
+        <CbuValidate />
       </Box>
     </Box>
   );

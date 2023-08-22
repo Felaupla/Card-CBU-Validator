@@ -8,7 +8,7 @@ import {
   Box,
   Center,
   Text,
-  Tooltip
+  Tooltip,
 } from "@chakra-ui/react";
 import { SmallAddIcon } from "@chakra-ui/icons";
 
@@ -93,28 +93,28 @@ export default function Validate() {
     >
       <Center>
         <Tooltip
-        hasArrow
-        label="Insert Card Number without hyphens"
-        bg="blue.500"
-      >
-        <InputGroup size="xl" w="67%" borderRadius="8px">
-          <Input
-            className="input-group"
-            placeholder="Test a CardNumber"
-            value={cardNumber}
-            type={show ? "text" : "password"}
-            onInput={handleInputChange} // Use onInput to handle both paste and typing
-            m={[2, 3]}
-            h="10"
-            borderRadius="8px"
-          />
-          <InputRightElement>
-            <Button m={[2, 3]} size="md" onClick={handleClick}>
-              {show ? "Hide" : "Show"}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-          </Tooltip>
+          hasArrow
+          label="Insert Card Number without hyphens"
+          bg="blue.500"
+        >
+          <InputGroup size="xl" w="67%" borderRadius="8px">
+            <Input
+              className="input-group"
+              placeholder="Test a CardNumber"
+              value={cardNumber}
+              type={show ? "text" : "password"}
+              onInput={handleInputChange} // Use onInput to handle both paste and typing
+              m={[2, 3]}
+              h="10"
+              borderRadius="8px"
+            />
+            <InputRightElement>
+              <Button m={[2, 3]} size="md" onClick={handleClick}>
+                {show ? "Hide" : "Show"}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+        </Tooltip>
         {/* replace(/.(?=.{6})/g, "*") */}
         <Button onClick={handleValidate}>Validate</Button>
       </Center>
