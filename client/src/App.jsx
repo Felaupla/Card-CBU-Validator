@@ -5,6 +5,7 @@ import ExcelFileUploader from "./components/Cards/Excelfileuploader.jsx";
 import ColorModeSwitcher from "./utils/ColorModeSwitcher.jsx";
 import { Text, Box, Spacer } from "@chakra-ui/react";
 import CbuValidate from "./components/Cbus/CbuValidate.jsx";
+import Cbufileuploader from "./components/Cbus/Cbufileuploader.jsx";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
       </Box>
       <Box borderRadius={20} m={[5, 7]}>
         <CbuValidate />
+      </Box>
+      <Box borderRadius={20} m={[5, 7]}>
+        <Cbufileuploader />
       </Box>
     </Box>
   );
