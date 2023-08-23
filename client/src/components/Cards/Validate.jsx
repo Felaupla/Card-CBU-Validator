@@ -4,13 +4,14 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  IconButton,
   Button,
   Box,
   Center,
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { SmallAddIcon } from "@chakra-ui/icons";
+import { LockIcon, UnlockIcon } from "@chakra-ui/icons";
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
@@ -88,7 +89,7 @@ export default function Validate() {
       wrap="no-wrap"
       borderColor="gray.300"
       boxShadow="dark-lg"
-      p="4"
+      p="1"
       rounded="2xl"
     >
       <Center>
@@ -109,9 +110,13 @@ export default function Validate() {
               borderRadius="8px"
             />
             <InputRightElement>
-              <Button m={[2, 3]} size="md" onClick={handleClick}>
-                {show ? "Hide" : "Show"}
-              </Button>
+              <IconButton
+                icon={show ? <LockIcon /> : <UnlockIcon />}
+                opacity={4}
+                m={[2, 3]}
+                size="md"
+                onClick={handleClick}
+              ></IconButton>
             </InputRightElement>
           </InputGroup>
         </Tooltip>

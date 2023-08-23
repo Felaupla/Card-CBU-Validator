@@ -4,13 +4,14 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  IconButton,
   Button,
   Box,
   Center,
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { SmallAddIcon } from "@chakra-ui/icons";
+import { LockIcon, UnlockIcon } from "@chakra-ui/icons";
 
 export default function CbuValidate() {
   const [cbuNumber, setCbuNumber] = useState("");
@@ -72,7 +73,7 @@ export default function CbuValidate() {
       wrap="no-wrap"
       borderColor="gray.600"
       boxShadow="dark-lg"
-      p="4"
+      p="1"
       rounded="xl"
     >
       <Text as="b" fontSize={{ base: "20px", md: "30px", lg: "40px" }}>
@@ -96,9 +97,13 @@ export default function CbuValidate() {
               borderRadius="8px"
             />
             <InputRightElement>
-              <Button m={[2, 3]} size="md" onClick={handleClick}>
-                {show ? "Hide" : "Show"}
-              </Button>
+              <IconButton
+                icon={show ? <LockIcon /> : <UnlockIcon />}
+                opacity={4}
+                m={[2, 3]}
+                size="md"
+                onClick={handleClick}
+              ></IconButton>
             </InputRightElement>
           </InputGroup>
         </Tooltip>
