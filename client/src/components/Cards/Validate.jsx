@@ -15,7 +15,7 @@ import { SmallAddIcon } from "@chakra-ui/icons";
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const handleClick = () => setShow(!show);
 
   //const deploy_host = import.meta.env.VITE_DEPLOY_HOST;

@@ -15,7 +15,7 @@ import { SmallAddIcon } from "@chakra-ui/icons";
 export default function CbuValidate() {
   const [cbuNumber, setCbuNumber] = useState("");
   const [response, setResponse] = useState(null);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const handleClick = () => setShow(!show);
 
   //const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
