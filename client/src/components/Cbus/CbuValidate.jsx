@@ -12,6 +12,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { LockIcon, UnlockIcon } from "@chakra-ui/icons";
+const VITE_DEPLOY_HOST = import.meta.env.VITE_DEPLOY_HOST;
 
 export default function CbuValidate() {
   const [cbuNumber, setCbuNumber] = useState("");
@@ -19,17 +20,13 @@ export default function CbuValidate() {
   const [show, setShow] = useState(true);
   const handleClick = () => setShow(!show);
 
-  //const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
-  const deploy_host = "https://validatecreditcard-production.up.railway.app";
-  //const deploy_host = "http://localhost:3001";
-
   const handleValidate = async () => {
     try {
       if (cbuNumber.trim() === "") {
         setResponse({
           valid: false,
           type: "Unknown",
-          message: "Card number must not be empty.",
+          message: "Cbu number must not be empty.",
         });
         return;
       }
@@ -41,7 +38,7 @@ export default function CbuValidate() {
         });
         return;
       }
-      const response = await fetch(`${deploy_host}/validateonecbu`, {
+      const response = await fetch(`${VITE_DEPLOY_HOST}/validateonecbu`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

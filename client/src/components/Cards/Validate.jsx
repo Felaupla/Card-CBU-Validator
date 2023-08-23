@@ -12,15 +12,13 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { LockIcon, UnlockIcon } from "@chakra-ui/icons";
+const VITE_DEPLOY_HOST = import.meta.env.VITE_DEPLOY_HOST;
 
 export default function Validate() {
   const [cardNumber, setCardNumber] = useState("");
   const [response, setResponse] = useState(null);
   const [show, setShow] = useState(true);
   const handleClick = () => setShow(!show);
-
-  //const deploy_host = import.meta.env.VITE_DEPLOY_HOST;
-  const deploy_host = "https://validatecreditcard-production.up.railway.app";
 
   const handleValidate = async () => {
     try {
@@ -55,7 +53,7 @@ export default function Validate() {
         cardType = "Unknown";
       }
 
-      const response = await fetch(`${deploy_host}/validateunique`, {
+      const response = await fetch(`${VITE_DEPLOY_HOST}/validateunique`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
