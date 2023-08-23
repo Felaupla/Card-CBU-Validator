@@ -10,7 +10,7 @@ export const Auth0ProviderModule = ({ children }) => {
       domain={VITE_REACT_APP_AUTH0_DOMAIN}
       clientId={VITE_REACT_APP_AUTH0_CLIENT_ID}
       authorizationParams={{
-        redirect_uri: "http://localhost:5173",
+        redirect_uri: window.location.origin,
       }}
       cacheLocation="localstorage"
     >
