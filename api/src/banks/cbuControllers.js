@@ -11,10 +11,6 @@ function validateOneCbu() {
         res.status(400).json({ error: "cbuNumber is required" });
         return;
       }
-      if (cbuNumber === 0) {
-        res.status(400).json({ error: "Invalid CBU number" });
-        return;
-      }
 
       // Check if CBU number has the correct format (for example, 22 digits)
       if (cbuNumber.length !== 22) {
