@@ -55,7 +55,7 @@ function validateCbus() {
           });
           return; // Skip further validation for this CBU
         }
-        if (cbu === 0) {
+        if (cbu === "0000000000000000000000") {
           validationResults.push({
             cbu,
             isValid: false,
