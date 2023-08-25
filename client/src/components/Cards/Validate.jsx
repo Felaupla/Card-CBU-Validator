@@ -122,7 +122,7 @@ export default function Validate() {
         <Button onClick={handleValidate}>Validate</Button>
       </Center>
       {response !== null && (
-        <Text className={response.valid ? "success" : "error"}>
+        <Text as="b" className={response.valid ? "success" : "error"}>
           {response.valid
             ? `Valid ${response.type} Card Number`
             : response.message || "Invalid Card Number"}

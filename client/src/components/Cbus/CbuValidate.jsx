@@ -5,6 +5,7 @@ import {
   InputGroup,
   InputRightElement,
   IconButton,
+  Divider,
   Button,
   Box,
   Center,
@@ -28,15 +29,31 @@ export default function CbuValidate() {
           type: "Unknown",
           message: "Cbu number must not be empty.",
         });
-        return;
+        return response;
+      }
+      if (cbuNumber.length > 22) {
+        setResponse({
+          valid: false,
+          type: "Unknown",
+          message: "CBU must have 22 digits",
+        });
+        return response;
       }
       if (cbuNumber.length < 22) {
         setResponse({
           valid: false,
           type: "Unknown",
+          message: "Incomplete CBU",
+        });
+        return response;
+      }
+      if (cbuNumber === "0000000000000000000000") {
+        setResponse({
+          valid: false,
+          type: "Unknown",
           message: "Incomplete CBU number.",
         });
-        return;
+        return response;
       }
       const response = await fetch(`${VITE_DEPLOY_HOST}/validateonecbu`, {
         method: "POST",
@@ -85,7 +102,7 @@ export default function CbuValidate() {
           <InputGroup size="xl" w="67%" borderRadius="8px">
             <Input
               className="input-group"
-              placeholder="Validate a Cbu Number"
+              placeholder="22 numeric digits"
               value={cbuNumber}
               type={show ? "text" : "password"}
               onInput={handleInputChange} // Use onInput to handle both paste and typing
@@ -109,13 +126,17 @@ export default function CbuValidate() {
       {response && (
         <Box>
           <Text
+            as="b"
             className={response.isValid ? "success" : "error"}
             fontSize="2xl"
           >
-            CBU is {response.isValid ? "Valid" : "Invalid"}
+            {response.message}
+            {/* CBU is {response.isValid ? "Valid" : "Invalid"} */}
           </Text>
           {response.isValid && (
-            <Text fontSize="2xl">Bank Name: {response.bankName}</Text>
+            <Text className="success" as="b" fontSize="2xl">
+              Valid CBU, Bank Name: {response.bankName}
+            </Text>
           )}
         </Box>
       )}
