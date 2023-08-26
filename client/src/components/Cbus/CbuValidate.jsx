@@ -51,7 +51,7 @@ export default function CbuValidate() {
         setResponse({
           valid: false,
           type: "Unknown",
-          message: "Incomplete CBU number.",
+          message: "Invalid CBU number.",
         });
         return response;
       }
