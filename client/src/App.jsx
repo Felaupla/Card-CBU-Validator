@@ -22,9 +22,13 @@ function App() {
   const { isAuthenticated, user } = useAuth0();
   return (
     <Box>
-      {/* <Flex>
-        <HStack p="20px">
-          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+      <Flex>
+        <Box>
+          <AppMenu />
+        </Box>
+        <Spacer />
+        <Box>
+          {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
           {isAuthenticated ? (
             <Avatar name={user.name} src={user.picture}>
               <AvatarBadge boxSize="1.25em" bg="green.500" />
@@ -32,20 +36,8 @@ function App() {
           ) : (
             ""
           )}
-        </HStack>
-        <ColorModeSwitcher initialColorMode="dark" p="20px" />
-      </Flex> */}
-      <HStack>
-        <AppMenu />
-        {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
-        {isAuthenticated ? (
-          <Avatar name={user.name} src={user.picture}>
-            <AvatarBadge boxSize="1.25em" bg="green.500" />
-          </Avatar>
-        ) : (
-          ""
-        )}
-      </HStack>
+        </Box>
+      </Flex>
       <Text as="b" fontSize={{ base: "24px", md: "40px", lg: "56px" }}>
         Credit Card Validator
       </Text>
@@ -64,10 +56,17 @@ function App() {
           <Cbufileuploader />
         ) : (
           <Text fontSize={{ base: "18px", md: "24px", lg: "32px" }}>
-            Log in to validate by an Excel File
+            Log in to validate by batch on an Excel File
           </Text>
         )}
       </Box>
+      <Text
+        color="green"
+        bg="green.400"
+        fontSize={{ base: "16px", md: "20px", lg: "28px" }}
+      >
+        Your Information is safe as we do not access it or store it
+      </Text>
     </Box>
   );
 }
