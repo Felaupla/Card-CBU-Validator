@@ -38,6 +38,14 @@ export default function Validate() {
         });
         return;
       }
+      if (cardNumber === "0000000000000000") {
+        setResponse({
+          valid: false,
+          type: "Unknown",
+          message: "Invalid card number.",
+        });
+        return;
+      }
 
       // Detect card type
       let cardType;
