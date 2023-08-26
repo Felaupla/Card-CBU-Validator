@@ -1,8 +1,8 @@
 import "./CbuValidator.css";
-import ColorModeSwitcher from "./utils/ColorModeSwitcher.jsx";
+import ColorModeSwitcher from "../../utils/ColorModeSwitcher";
 import { Text, Box, Spacer } from "@chakra-ui/react";
-import CbuValidate from "./components/Cbus/CbuValidate.jsx";
-import Cbufileuploader from "./components/Cbus/Cbufileuploader.jsx";
+import CbuValidate from "../../components/Cbus/CbuValidate";
+import Cbufileuploader from "../../components/Cbus/Cbufileuploader.jsx";
 
 function CbuValidator() {
   return (

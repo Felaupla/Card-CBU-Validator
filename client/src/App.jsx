@@ -1,8 +1,8 @@
 //import { useState } from "react";
-import Validate from "./components/Cards/Validate.jsx";
+import Validate from "./components/Cards/Validate";
+import AppMenu from "./utils/AppMenu.jsx";
 import "./App.css";
 import ExcelFileUploader from "./components/Cards/Excelfileuploader.jsx";
-import ColorModeSwitcher from "./utils/ColorModeSwitcher.jsx";
 import {
   Text,
   Box,
@@ -22,7 +22,7 @@ function App() {
   const { isAuthenticated, user } = useAuth0();
   return (
     <Box>
-      <Flex>
+      {/* <Flex>
         <HStack p="20px">
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           {isAuthenticated ? (
@@ -34,8 +34,18 @@ function App() {
           )}
         </HStack>
         <ColorModeSwitcher initialColorMode="dark" p="20px" />
-      </Flex>
-
+      </Flex> */}
+      <HStack>
+        <AppMenu />
+        {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
+        {isAuthenticated ? (
+          <Avatar name={user.name} src={user.picture}>
+            <AvatarBadge boxSize="1.25em" bg="green.500" />
+          </Avatar>
+        ) : (
+          ""
+        )}
+      </HStack>
       <Text as="b" fontSize={{ base: "24px", md: "40px", lg: "56px" }}>
         Credit Card Validator
       </Text>

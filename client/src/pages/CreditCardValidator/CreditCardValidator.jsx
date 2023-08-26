@@ -1,7 +1,7 @@
 import "./CreditCardValidator.css";
-import Validate from "./components/Cards/Validate.jsx";
-import ExcelFileUploader from "./components/Cards/Excelfileuploader.jsx";
-import ColorModeSwitcher from "./utils/ColorModeSwitcher.jsx";
+import Validate from "../../components/Cards/Validate";
+import ExcelFileUploader from "../../components/Cards/Excelfileuploader.jsx";
+import ColorModeSwitcher from "../../utils/ColorModeSwitcher";
 import { Text, Box, Spacer } from "@chakra-ui/react";
 
 function CreditCardValidator() {

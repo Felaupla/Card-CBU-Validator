@@ -118,7 +118,7 @@ export default function Validate() {
             </InputRightElement>
           </InputGroup>
         </Tooltip>
-        {/* replace(/.(?=.{6})/g, "*") */}
+
         <Button onClick={handleValidate}>Validate</Button>
       </Center>
       {response !== null && (
