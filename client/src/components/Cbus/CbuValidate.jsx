@@ -89,6 +89,7 @@ export default function CbuValidate() {
   };
   return (
     <Box
+      w="100%"
       wrap="no-wrap"
       borderColor="gray.600"
       boxShadow="dark-lg"

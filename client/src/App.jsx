@@ -5,29 +5,29 @@ import "./App.css";
 import ExcelFileUploader from "./components/Cards/Excelfileuploader.jsx";
 import {
   Text,
+  VStack,
   Box,
+  Center,
+  Flex,
   Spacer,
   Avatar,
   AvatarBadge,
-  Flex,
-  HStack,
 } from "@chakra-ui/react";
 import CbuValidate from "./components/Cbus/CbuValidate.jsx";
 import Cbufileuploader from "./components/Cbus/Cbufileuploader.jsx";
 import { useAuth0 } from "@auth0/auth0-react";
-import { LoginButton } from "./utils/Login.jsx";
-import { LogoutButton } from "./utils/Logout.jsx";
+import About from "../src/pages/About/About";
 
 function App() {
   const { isAuthenticated, user } = useAuth0();
   return (
-    <Box>
-      <Flex>
-        <Box>
+    
+    <VStack >
+      <Box display="flex" alignItems="start">
+        <Box display="flex" alignItems="start" >
           <AppMenu />
         </Box>
-        <Spacer />
-        <Box>
+        <Box w="100%">
           {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
           {isAuthenticated ? (
             <Avatar name={user.name} src={user.picture}>
@@ -37,37 +37,42 @@ function App() {
             ""
           )}
         </Box>
-      </Flex>
+      </Box>
       <Text as="b" fontSize={{ base: "24px", md: "40px", lg: "56px" }}>
         Credit Card Validator
       </Text>
-      <Box m={[5, 7]}>
+      <Box m={[3, 5]} w="100%" h="15%">
         <Validate />
       </Box>
-      <Spacer />
-      <Box borderRadius={20} m={[5, 7]}>
-        {isAuthenticated ? <ExcelFileUploader /> : ""}
+      {isAuthenticated ? 
+      <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
+        
       </Box>
-      <Box borderRadius={20} m={[5, 7]}>
+      : ""}
+      <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
         <CbuValidate />
       </Box>
-      <Box borderRadius={20} m={[5, 7]}>
-        {isAuthenticated ? (
+      {isAuthenticated ? (
+      <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
           <Cbufileuploader />
-        ) : (
-          <Text fontSize={{ base: "18px", md: "24px", lg: "32px" }}>
+          </Box>
+          ) : (
+            <Text fontSize={{ base: "18px", md: "24px", lg: "32px" }}>
             Log in to validate by batch on an Excel File
           </Text>
         )}
-      </Box>
       <Text
         color="green"
+        p="1%"
         bg="green.400"
         fontSize={{ base: "16px", md: "20px", lg: "28px" }}
       >
-        Your Information is safe as we do not access it or store it
+        Your Information is safe as we do not store or access it
       </Text>
-    </Box>
+      <Center alignItems="flex-end">
+      <About />
+      </Center>
+    </VStack>
   );
 }
 
