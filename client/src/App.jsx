@@ -55,7 +55,7 @@ function App() {
       </Box>
       {isAuthenticated ? 
       <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
-        
+        <ExcelFileUploader/>
       </Box>
       : ""}
       <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
