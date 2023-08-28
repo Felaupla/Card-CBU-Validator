@@ -12,16 +12,25 @@ import {
   Spacer,
   Avatar,
   AvatarBadge,
+  extendTheme,
 } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import CbuValidate from "./components/Cbus/CbuValidate.jsx";
 import Cbufileuploader from "./components/Cbus/Cbufileuploader.jsx";
 import { useAuth0 } from "@auth0/auth0-react";
 import About from "../src/pages/About/About";
 
+// Extend the default Chakra UI theme to set dark mode by default
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark', // Set 'dark' as the default color mode
+  },
+});
+
 function App() {
   const { isAuthenticated, user } = useAuth0();
   return (
-    
+    <ChakraProvider theme={theme}>
     <VStack >
       <Box display="flex" alignItems="start">
         <Box display="flex" alignItems="start" >
@@ -73,6 +82,7 @@ function App() {
       <About />
       </Center>
     </VStack>
+    </ChakraProvider>
   );
 }
 
