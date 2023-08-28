@@ -26,34 +26,30 @@ export default function CbuValidate() {
       if (cbuNumber.trim() === "") {
         setResponse({
           valid: false,
-          type: "Unknown",
           message: "Cbu number must not be empty.",
         });
-        return response;
+        return response.message;
       }
       if (cbuNumber.length > 22) {
         setResponse({
           valid: false,
-          type: "Unknown",
           message: "CBU must have 22 digits",
         });
-        return response;
+        return response.message;
       }
       if (cbuNumber.length < 22) {
         setResponse({
           valid: false,
-          type: "Unknown",
           message: "Incomplete CBU",
         });
-        return response;
+        return response.message;
       }
       if (cbuNumber === "0000000000000000000000") {
         setResponse({
           valid: false,
-          type: "Unknown",
           message: "Invalid CBU number.",
         });
-        return response;
+        return response.message;
       }
       const response = await fetch(`${VITE_DEPLOY_HOST}/validateonecbu`, {
         method: "POST",
@@ -62,8 +58,17 @@ export default function CbuValidate() {
         },
         body: JSON.stringify({ cbu: cbuNumber }),
       });
-
+  
       const data = await response.json();
+  
+      if (!data.isValid) {
+        setResponse({
+          valid: false,
+          message: "Invalid CBU number.", // You can customize this message as needed
+        });
+        return response.message; // This might need to be removed if not needed
+      }
+  
       setResponse(data);
     } catch (error) {
       console.error("Error:", error);
@@ -131,7 +136,6 @@ export default function CbuValidate() {
             fontSize="2xl"
           >
             {response.message}
-            {/* CBU is {response.isValid ? "Valid" : "Invalid"} */}
           </Text>
           {response.isValid && (
             <Text className="success" as="b" fontSize="2xl">

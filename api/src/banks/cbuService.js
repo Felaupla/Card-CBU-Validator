@@ -4,12 +4,12 @@ const { banks } = require("./bankCodes");
  * Based on Toba, from https://repositorio.siu.edu.ar/
  */
 function isValid(cbu) {
-  if (!/[0-9]{22}/.test(cbu)) return false;
-  if (cbu==="0000000000000000000000") return false;
+  if (!/[0-9]{22}/.test(cbu)) return {isValid: false};
+  if (cbu==="0000000000000000000000") return {isValid: false};
 
   const arr = cbu.split("").map(Number);
-  if (arr[7] !== getDigitoVerificador(arr, 0, 6)) return false;
-  if (arr[21] !== getDigitoVerificador(arr, 8, 20)) return false;
+  if (arr[7] !== getDigitoVerificador(arr, 0, 6)) return {isValid: false};
+  if (arr[21] !== getDigitoVerificador(arr, 8, 20)) return {isValid: false};
 
   const bankId = getBankId(cbu);
   const bankName = getBankName(bankId, banks);
