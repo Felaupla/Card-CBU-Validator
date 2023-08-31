@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Text, Link, Image, Spacer, useColorMode, HStack } from '@chakra-ui/react';
+import { Box, Text, Link, Image, useColorMode,  } from '@chakra-ui/react';
 import githublogo from '../../assets/github-logo.png';
 import linkedinlogo from '../../assets/linkedin-logo.png';
 
@@ -18,7 +18,7 @@ export default function About() {
 
   return (
     <Box >
-      <Box display="flex" alignItems="center">
+      <Box display="flex" justifyContent="center" alignItems="center">
         <Link href="https://github.com/Felaupla">
           <Image
             src={githublogo}

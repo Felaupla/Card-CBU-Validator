@@ -79,7 +79,7 @@ export default function ExcelFileUploader() {
   return (
     <Box width="full" boxShadow="dark-lg" p="4" rounded="xl">
       <Text as="b" fontSize={{ base: "20px", md: "30px", lg: "40px" }}>
-        Validate CBU´s on an Excel File
+        Validate CBU´s on Excel File
       </Text>
       <Tooltip
         hasArrow
@@ -91,7 +91,7 @@ export default function ExcelFileUploader() {
           accept=".xlsx"
           onChange={handleFileChange}
           w="65%"
-          m={[2, 3]}
+          m={[1, 3]}
         />
       </Tooltip>
       <Button onClick={handleFileUpload}>Upload</Button>

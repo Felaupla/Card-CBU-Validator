@@ -2,20 +2,16 @@ import {
   Avatar,
   AvatarBadge,
   Button,
-  Center,
-  HStack,
+  Box,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
-  MenuDivider,
   Flex,
-  Link,
   IconButton,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import CreditCardValidator from "../pages/CreditCardValidator/CreditCardValidator";
-import CbuValidator from "../pages/CbuValidator/CbuValidator";
+
 import ColorModeSwitcher from "./ColorModeSwitcher";
 import { LoginButton } from "./Login";
 import { LogoutButton } from "./Logout";
@@ -25,27 +21,35 @@ export default function AppMenu() {
   const { isAuthenticated, user } = useAuth0();
 
   return (
-    <Flex>
-      <Menu>
+    <Flex justifyContent="space-between">
+      <Menu w='10%'>
         <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
           Menu
         </MenuButton>
-        <MenuList>
-          <Link to={<CreditCardValidator />}></Link>
-
-          <Link to={<CbuValidator />}></Link>
-
-          <MenuDivider />
-          <MenuItem>
-            <Center>
+        <MenuList w='20px'>
+          <MenuItem minH='40px'>
+            <Button >
               <ColorModeSwitcher initialColorMode="dark" p="20px" />
-            </Center>
+            </Button>
           </MenuItem>
-          <MenuItem>
-            {isAuthenticated ? <LogoutButton p="5%" /> : <LoginButton p="5%" />}
+          <MenuItem minH='40px'>
+            {isAuthenticated ? (
+              <LogoutButton p="5%" w="100%" />
+            ) : (
+              <LoginButton p="5%"  />
+            )}
           </MenuItem>
         </MenuList>
       </Menu>
+      <Box>
+        {isAuthenticated ? (
+          <Avatar name={user.name} src={user.picture}>
+            <AvatarBadge boxSize="1.15em" bg="green.500" />
+          </Avatar>
+        ) : (
+          ""
+        )}
+      </Box>
     </Flex>
   );
 }

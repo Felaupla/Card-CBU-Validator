@@ -1,88 +1,54 @@
-//import { useState } from "react";
-import Validate from "./components/Cards/Validate";
+import React from "react";
+import { Box, SimpleGrid, Text,Tab, Tabs,TabPanel, TabPanels, TabList, Spacer } from "@chakra-ui/react";
 import AppMenu from "./utils/AppMenu.jsx";
-import "./App.css";
-import ExcelFileUploader from "./components/Cards/Excelfileuploader.jsx";
-import {
-  Text,
-  VStack,
-  Box,
-  Center,
-  Flex,
-  Spacer,
-  Avatar,
-  AvatarBadge,
-  extendTheme,
-} from "@chakra-ui/react";
-import { ChakraProvider } from "@chakra-ui/react";
-import CbuValidate from "./components/Cbus/CbuValidate.jsx";
-import Cbufileuploader from "./components/Cbus/Cbufileuploader.jsx";
-import { useAuth0 } from "@auth0/auth0-react";
 import About from "../src/pages/About/About";
+import CreditCardValidator from "./pages/CreditCardValidator/CreditCardValidator";
+import CbuValidator from "./pages/CbuValidator/CbuValidator";
+import theme from "./utils/theme.js";
+import {useAuth0} from '@auth0/auth0-react'
 
-// Extend the default Chakra UI theme to set dark mode by default
-const theme = extendTheme({
-  config: {
-    initialColorMode: 'dark', // Set 'dark' as the default color mode
-  },
-});
 
 function App() {
-  const { isAuthenticated, user } = useAuth0();
+
+ const { isAuthenticated  } = useAuth0();
   return (
-    <ChakraProvider theme={theme}>
-    <VStack >
-      <Box display="flex" alignItems="start">
-        <Box display="flex" alignItems="start" >
-          <AppMenu />
-        </Box>
-        <Box w="100%">
-          {/* {isAuthenticated ? <LogoutButton /> : <LoginButton />} */}
-          {isAuthenticated ? (
-            <Avatar name={user.name} src={user.picture}>
-              <AvatarBadge boxSize="1.25em" bg="green.500" />
-            </Avatar>
-          ) : (
-            ""
-          )}
-        </Box>
-      </Box>
-      <Text as="b" fontSize={{ base: "24px", md: "40px", lg: "56px" }}>
-        Credit Card Validator
-      </Text>
-      <Box m={[3, 5]} w="100%" h="15%">
-        <Validate />
-      </Box>
-      {isAuthenticated ? 
-      <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
-        <ExcelFileUploader/>
-      </Box>
-      : ""}
-      <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
-        <CbuValidate />
-      </Box>
-      {isAuthenticated ? (
-      <Box borderRadius={20} m={[3, 5]} w="100%" h="15%">
-          <Cbufileuploader />
-          </Box>
-          ) : (
-            <Text fontSize={{ base: "18px", md: "24px", lg: "32px" }}>
-            Log in to validate by batch on an Excel File
-          </Text>
-        )}
-      <Text
-        color="green"
-        p="1%"
-        bg="green.400"
-        fontSize={{ base: "16px", md: "20px", lg: "28px" }}
+    <SimpleGrid theme={theme}>
+      <Box
+        display="grid"
+        gridTemplateRows="auto 1fr auto"
       >
-        Your Information is safe as we do not store or access it
-      </Text>
-      <Center alignItems="flex-end">
-      <About />
-      </Center>
-    </VStack>
-    </ChakraProvider>
+        <AppMenu />
+        <Spacer h='0.8vh'/>
+        <Tabs size='md' variant='enclosed'>
+  <TabList>
+    <Tab>Credit Card Validator</Tab>
+    <Tab>Cbu Validator</Tab>
+  </TabList>
+  <TabPanels>
+  <TabPanel>
+    <CreditCardValidator />
+    </TabPanel>
+    <TabPanel >
+    <CbuValidator />
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+        <Box w='100%'>
+          <Text
+            color="green"
+            p='10px'
+            bg="green.400"
+            fontSize={{ base: "14px", md: "18px", lg: "24px" }}
+          >
+            Your Information is safe as we do not store or access it
+          </Text>
+        </Box>
+        {isAuthenticated ? "":(<Spacer h='8vh'/>) }
+        <Box d="flex" alignItems="start" alignSelf="flex-end">
+          <About />
+        </Box>
+      </Box>
+    </SimpleGrid>
   );
 }
 

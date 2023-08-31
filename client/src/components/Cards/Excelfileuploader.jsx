@@ -74,7 +74,7 @@ export default function ExcelFileUploader() {
   return (
     <Box width="full" boxShadow="dark-lg" p="4" rounded="xl">
       <Text as="b" fontSize={{ base: "20px", md: "30px", lg: "40px" }}>
-        Validate an Excel File
+        Validate Cards on Excel File
       </Text>
       <Tooltip
         hasArrow

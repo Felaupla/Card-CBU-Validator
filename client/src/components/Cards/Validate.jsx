@@ -98,6 +98,9 @@ export default function Validate() {
       p="1"
       rounded="2xl"
     >
+            <Text as="b" fontSize={{ base: "20px", md: "30px", lg: "40px" }}>
+        Validate a Card Number
+      </Text>
       <Center>
         <Tooltip
           hasArrow
@@ -107,7 +110,7 @@ export default function Validate() {
           <InputGroup size="xl" w="67%" borderRadius="8px">
             <Input
               className="input-group"
-              placeholder="Test a CardNumber"
+              placeholder="Visa, MasterCard, Cabal, Amex..."
               value={cardNumber}
               type={show ? "text" : "password"}
               onInput={handleInputChange} // Use onInput to handle both paste and typing
