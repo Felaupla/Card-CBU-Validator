@@ -5,7 +5,7 @@ import CbuValidate from "../../components/Cbus/CbuValidate";
 import Cbufileuploader from "../../components/Cbus/Cbufileuploader.jsx";
 
 function CbuValidator() {
-  const {isAuthenticated} = useAuth0()
+  const { isAuthenticated } = useAuth0();
   return (
     <Box>
       {/* <Text as="b" fontSize={{ base: "24px", md: "40px", lg: "56px" }}>
@@ -19,14 +19,19 @@ function CbuValidator() {
           <Cbufileuploader />
         ) : (
           <Text>Log in to Validate by an Excel File</Text>
-
         )}
-        {isAuthenticated ? 
-          (""):(<Spacer/>)}
-        
+        {isAuthenticated ? "" : <Spacer />}
       </Box>
-
-
+      <Box w="100%">
+        <Text
+          color="green"
+          p="10px"
+          bg="green.400"
+          fontSize={{ base: "14px", md: "18px", lg: "24px" }}
+        >
+          Your Information is safe as we do not store or access it
+        </Text>
+      </Box>
     </Box>
   );
 }
