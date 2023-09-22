@@ -8,7 +8,6 @@ import {
   MenuItem,
   MenuList,
   Flex,
-  IconButton,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
@@ -18,7 +17,7 @@ import { LogoutButton } from "./Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function AppMenu() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, logout } = useAuth0();
 
   return (
     <Flex justifyContent="space-between">
@@ -43,7 +42,9 @@ export default function AppMenu() {
       </Menu>
       <Box>
         {isAuthenticated ? (
-          <Avatar name={user.name} src={user.picture}>
+          <Avatar name={user.name} src={user.picture} onClick={() =>
+            logout({ logoutParams: { returnTo: window.location.origin } })
+          }>
             <AvatarBadge boxSize="1.15em" bg="green.500" />
           </Avatar>
         ) : (
